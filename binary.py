@@ -1,13 +1,23 @@
+# Convertir une valeur decimale en valeur binaire (sous forme de tableau)
 def decimal_to_binary(dec_value):
+    # On applique un masque un a la valeur decimale
+    # L'ordinateur voit la valeur decimale sous forme binaire
+    # On va donc avec cela recuperer la valeur du bit de poids faible
+    # Exemple : Ma valeur decimale est 7, represente en binaire 0, 1, 1, 1
+    # J'applique un masque 1 (donc 0, 0, 0, 1) : ca me donne 1
+    # On stocke donc 1 dans notre tableau d'elements binaire
     binary_value = [dec_value & 1]
+    # On decale les bits de notre valeur decimale de 2 a droite : On regarde enfait
+    # Le bit suivant, et ça divise la valeur par deux
     dec_value >>= 1
+    # On fait ça tant que notre nombre ne vaut pas 0
     while dec_value != 0:
         binary_value.append(dec_value & 1)
         dec_value >>= 1
     return binary_value
 
 test1 = 567
-print('Convert test1 decimal to Binary : ', decimal_to_binary(test1))
+print('Convert 567 to Binary : ', decimal_to_binary(test1))
 
 
 def binary_to_decimal(binary_value):
